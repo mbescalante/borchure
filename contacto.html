@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - DRC Multiservicios E.I.R.L.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos mejorados para el encabezado */
+        header {
+            background: linear-gradient(to bottom, #ffffff, #f5f5f5);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-bottom: 3px solid #1e5631;
+        }
+
+        .logo-container {
+            background: linear-gradient(to right, #f5f5f5, #e0e0e0);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: translateY(-2px);
+        }
+
+        .company-info h1 {
+            color: #1e5631;
+            font-size: 28px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            letter-spacing: 1px;
+        }
+        
+        .ruc {
+            color: #555;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .logo {
+            max-height: 80px;
+            filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.2));
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .services-header {
+            background: linear-gradient(to right, #1e5631, #2a7a45);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .services-header ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+        }
+        
+        .services-header li {
+            color: #fff;
+            font-size: 14px;
+            padding: 8px;
+            border-left: 3px solid #a3d45c;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 0 4px 4px 0;
+        }
+        
+        /* Estilos mejorados para la sección de contacto */
+        .contacto-container {
+            padding: 40px 20px;
+        }
+        
+        .contacto-info {
+            background-color: #fff;
+            border-left: 5px solid #1e5631;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .contacto-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .contacto-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contacto-item i {
+            font-size: 30px;
+            color: #1e5631;
+            margin-right: 15px;
+            width: 40px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .contacto-item:hover i {
+            transform: scale(1.2);
+        }
+        
+        .contacto-item .info {
+            color: #666;
+        }
+        
+        .contacto-item .info h3 {
+            background-color: #1e5631;
+            color: white;
+            padding: 5px 10px;
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            border-radius: 4px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            display: inline-block;
+        }
+        
+        .contacto-form {
+            background-color: #fff;
+            border-left: 5px solid #1e5631;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .contacto-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            background-color: #1e5631;
+            color: white;
+            margin-bottom: 8px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #1e5631;
+            box-shadow: 0 0 8px rgba(30, 86, 49, 0.3);
+            outline: none;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #1e5631;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .submit-btn:hover {
+            background-color: #a3d45c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+        }
+        
+        .map-container {
+            margin-top: 30px;
+            height: 400px;
+            border: 3px solid #1e5631;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .map-container:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* Estilos mejorados para breadcrumb */
+        .breadcrumb {
+            background: linear-gradient(to right, #f5f5f5, #ffffff);
+            padding: 12px 25px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: #1e5631;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+            color: #2a7d45;
+        }
+        
+        @media (min-width: 768px) {
+            .contacto-flex {
+                display: flex;
+                gap: 30px;
+            }
+            
+            .contacto-info, .contacto-form {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo-drc.png" alt="Logo DRC Multiservicios" class="logo">
+            <div class="company-info">
+                <h1>DRC MULTISERVICIOS E.I.R.L.</h1>
+                <p class="ruc">R.U.C. 20610755977</p>
+            </div>
+        </div>
+        <div class="services-header">
+            <ul>
+                <li>• CONSTRUCCIÓN CIVIL Y AFINES</li>
+                <li>• SERVICIOS GENERALES PARA ENTIDADES PÚBLICAS Y PRIVADAS</li>
+                <li>• VENTA DE BIENES PARA ENTIDADES PÚBLICAS Y PRIVADAS</li>
+                <li>• ALQUILER DE MAQUINARIA Y EQUIPO PARA TRANSPORTE EN GENERAL</li>
+            </ul>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="proyectos.html">Proyectos</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html" class="active">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="index.html">Inicio</a> > Contacto
+    </div>
+
+    <section class="contacto-container">
+        <h2>CONTÁCTENOS</h2>
+        
+        <div class="contacto-flex">
+            <div class="contacto-info">
+                <h3>INFORMACIÓN DE CONTACTO</h3>
+                
+                <div class="contacto-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="info">
+                        <h3>Dirección</h3>
+                        <p>AV. AGUSTIN GAMARRA N° 3664 - S.M.P.</p>
+                    </div>
+                </div>
+                
+                <div class="contacto-item">
+                    <i class="fas fa-phone"></i>
+                    <div class="info">
+                        <h3>Teléfono</h3>
+                        <p>947 252 079</p>
+                    </div>
+                </div>
+                
+                <div class="contacto-item">
+                    <i class="fas fa-envelope"></i>
+                    <div class="info">
+                        <h3>Email</h3>
+                        <p>RODAFINO2007@GMAIL.COM</p>
+                    </div>
+                </div>
+                
+                <div class="contacto-item">
+                    <i class="fas fa-clock"></i>
+                    <div class="info">
+                        <h3>Horario de Atención</h3>
+                        <p>Lunes a Viernes: 8:00 AM - 6:00 PM<br>
+                        Sábados: 8:00 AM - 1:00 PM</p>
+                    </div>
+                </div>
+                
+                <div class="contacto-item">
+                    <i class="fas fa-building"></i>
+                    <div class="info">
+                        <h3>RUC</h3>
+                        <p>20610755977</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contacto-form">
+                <h3>ENVÍENOS UN MENSAJE</h3>
+                
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="asunto">Asunto</label>
+                        <input type="text" id="asunto" name="asunto" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="map-container">
+            <!-- Aquí se puede insertar un mapa de Google Maps con la ubicación de la empresa -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d975.3305146262096!2d-77.08419929999999!3d-12.019096499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105ce95c1580bd5%3A0x66b0fd36fb020db3!2zQWd1c3TDrW4gR2FtYXJyYSAzNjY0LCBMaW1hIDE1MTA3LCBQZXLDug!5e0!3m2!1ses!2s!4v1718057845037!5m2!1ses!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fab fa-whatsapp"></i>
+                <span>947 252 079</span>
+            </div>
+            <div class="contact-item">
+                <i class="far fa-envelope"></i>
+                <span>RODAFINO2007@GMAIL.COM</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>AV. AGUSTIN GAMARRA N° 3664 - S.M.P.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Overlay para mostrar imágenes a pantalla completa -->
+    <div class="fullscreen-overlay" id="fullscreen-overlay">
+        <span class="close-button" onclick="closeFullscreen()">&times;</span>
+        <img src="" alt="Imagen a pantalla completa" class="fullscreen-image" id="fullscreen-image">
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Script para manejar el envío del formulario
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Gracias por su mensaje. Nos pondremos en contacto con usted pronto.');
+            this.reset();
+        });
+
+        // Función para mostrar imagen a pantalla completa
+        function openFullscreen(imageSrc) {
+            const overlay = document.getElementById('fullscreen-overlay');
+            const image = document.getElementById('fullscreen-image');
+            
+            image.src = imageSrc;
+            overlay.style.display = 'flex';
+            
+            // Evitar scroll del body cuando el overlay está abierto
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Función para cerrar la imagen a pantalla completa
+        function closeFullscreen() {
+            const overlay = document.getElementById('fullscreen-overlay');
+            overlay.style.display = 'none';
+            
+            // Restaurar scroll del body
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Cerrar el overlay al hacer clic fuera de la imagen
+        document.getElementById('fullscreen-overlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeFullscreen();
+            }
+        });
+        
+        // Cerrar el overlay al presionar la tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('fullscreen-overlay').style.display === 'flex') {
+                closeFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>

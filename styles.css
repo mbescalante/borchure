@@ -1,0 +1,528 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Encabezado */
+header {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-bottom: 3px solid #1e5631;
+}
+
+/* Navegación principal */
+.main-nav {
+    background-color: #1e5631;
+    margin-top: 15px;
+    border-radius: 4px;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.main-nav li {
+    flex: 1;
+    text-align: center;
+}
+
+.main-nav a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 15px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.main-nav a:hover, .main-nav a.active {
+    background-color: #a3d45c;
+    color: #1e5631;
+}
+
+@media (max-width: 768px) {
+    .main-nav ul {
+        flex-direction: column;
+    }
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.company-info h1 {
+    color: #666;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.ruc {
+    color: #666;
+    font-size: 16px;
+}
+
+.services-header ul {
+    list-style: none;
+}
+
+.services-header li {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* Galería de imágenes principal */
+.hero {
+    padding: 20px;
+    background-color: #1e5631;
+    background-image: linear-gradient(rgba(30, 86, 49, 0.9), rgba(30, 86, 49, 0.9)), url('images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: 5px solid #a3d45c;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
+/* Secciones de contenido */
+section {
+    padding: 30px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    background-color: #1e5631;
+}
+
+section h2 {
+    color: #a3d45c;
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+section h3 {
+    color: #fff;
+    background-color: #1e5631;
+    padding: 10px 15px;
+    margin: 20px 0;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+section p {
+    color: #666;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* Servicios y Agregados */
+.servicios-grid, .agregados-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.servicio-item, .agregado-item {
+    color: #666;
+    padding: 5px 0;
+}
+
+/* Galerías de servicios y trabajos */
+.servicios-gallery, .trabajos-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.servicio-img img, .trabajo-img img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: 3px solid #1e5631;
+}
+
+/* Footer */
+footer {
+    background-color: #1e5631;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.contact-item i {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #a3d45c;
+}
+
+/* Estilos para la sección de trabajos realizados */
+.trabajos-container {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+}
+
+.trabajos-container h2 {
+    color: #1e5631;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.trabajos-container p {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+.trabajos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.trabajo-card {
+    background-color: #fff;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.trabajo-card:hover {
+    transform: translateY(-5px);
+}
+
+.trabajo-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.trabajo-info {
+    padding: 20px;
+}
+
+.trabajo-info h3 {
+    color: #1e5631;
+    margin-bottom: 10px;
+}
+
+/* Estilos para la sección de clientes */
+.clientes-container {
+    padding: 40px 20px;
+}
+
+.clientes-container h2 {
+    color: #1e5631;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.clientes-container p {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+.clientes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.cliente-card {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+.cliente-card:hover {
+    transform: translateY(-5px);
+}
+
+.cliente-logo {
+    max-width: 100%;
+    max-height: 120px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.cliente-nombre {
+    font-weight: bold;
+    color: #1e5631;
+    margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .logo-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .logo {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .gallery, .servicios-grid, .agregados-grid, .servicios-gallery, .trabajos-gallery, .featured-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-info {
+        flex-direction: column;
+    }
+    
+    .clients-logos {
+        gap: 20px;
+    }
+    
+    .clients-logos img {
+        max-width: 120px;
+    }
+}
+
+/* Estilos para la sección de trabajos destacados */
+.featured-section {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+}
+
+.featured-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.featured-content h2 {
+    color: #1e5631;
+    margin-bottom: 20px;
+}
+
+.featured-content p {
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.featured-item {
+    background-color: #fff;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.featured-item:hover {
+    transform: translateY(-5px);
+}
+
+.featured-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.featured-item h3 {
+    padding: 15px;
+    color: #1e5631;
+}
+
+.featured-button {
+    display: inline-block;
+    background-color: #1e5631;
+    color: #fff;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.featured-button:hover {
+    background-color: #164023;
+}
+
+/* Estilos para la sección de clientes */
+.clients-section {
+    padding: 60px 20px;
+}
+
+.clients-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.clients-content h2 {
+    color: #1e5631;
+    margin-bottom: 20px;
+}
+
+.clients-content p {
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.clients-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.clients-logos img {
+    max-width: 150px;
+    max-height: 80px;
+    object-fit: contain;
+}
+
+.clients-button {
+    display: inline-block;
+    background-color: #1e5631;
+    color: #fff;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.clients-button:hover {
+    background-color: #164023;
+}
+
+/* Estilos para la sección CTA */
+.cta-section {
+    background-color: #1e5631;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.cta-content p {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #fff;
+    color: #1e5631;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Secciones específicas */
+.empresa, .mision, .vision {
+    background-color: #f9f9f9;
+}
+
+.sobre-nosotros {
+    background-color: #fff;
+}
+
+.servicios-generales h3, .trabajos-realizados h2 {
+    color: #a3d45c;
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.servicios-generales h3 {
+    font-size: 24px;
+    text-align: center;
+}

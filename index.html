@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRC Multiservicios E.I.R.L.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos mejorados para el encabezado */
+        header {
+            background: linear-gradient(to bottom, #ffffff, #f5f5f5);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-bottom: 3px solid #1e5631;
+        }
+
+        .logo-container {
+            background: linear-gradient(to right, #f5f5f5, #e0e0e0);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: translateY(-2px);
+        }
+
+        .company-info h1 {
+            color: #1e5631;
+            font-size: 28px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            letter-spacing: 1px;
+        }
+        
+        .ruc {
+            color: #555;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .logo {
+            max-height: 80px;
+            filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.2));
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .services-header {
+            background: linear-gradient(to right, #1e5631, #2a7a45);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .services-header ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+        }
+        
+        .services-header li {
+            color: #fff;
+            font-size: 14px;
+            padding: 8px;
+            border-left: 3px solid #a3d45c;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Estilos mejorados para las imágenes */
+        .gallery-item img, .servicio-img img, .trabajo-img img, .featured-item img {
+            max-height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item img:hover, .servicio-img img:hover, .trabajo-img img:hover, .featured-item img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Estilos mejorados para los títulos */
+        .featured-item h3 {
+            background-color: #1e5631;
+            color: white;
+            padding: 8px 12px;
+            margin-top: 10px;
+            border-radius: 4px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* Estilos para el carrusel de logos */
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin: 20px 0;
+            padding: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        .carousel-track {
+            display: flex;
+            animation: scroll 30s linear infinite;
+            width: calc(200px * 18); /* 9 logos * 2 (para repetir) * 200px ancho */
+        }
+
+        .carousel-slide {
+            width: 200px;
+            flex-shrink: 0;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-slide img {
+            max-width: 100%;
+            max-height: 100px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .carousel-slide img:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 5px rgba(30, 86, 49, 0.5));
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-200px * 9)); /* 9 logos * 200px ancho */
+            }
+        }
+
+        /* Controles del carrusel */
+        .carousel-container:hover .carousel-track {
+            animation-play-state: paused;
+        }
+
+        .carousel-container::before,
+        .carousel-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 50px;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .carousel-container::before {
+            left: 0;
+            background: linear-gradient(to right, #fff, transparent);
+        }
+
+        .carousel-container::after {
+            right: 0;
+            background: linear-gradient(to left, #fff, transparent);
+        }
+
+        /* Estilos para el fullscreen overlay */
+        .fullscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .fullscreen-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo-drc.png" alt="Logo DRC Multiservicios" class="logo">
+            <div class="company-info">
+                <h1>DRC MULTISERVICIOS E.I.R.L.</h1>
+                <p class="ruc">R.U.C. 20610755977</p>
+            </div>
+        </div>
+        <div class="services-header">
+            <ul>
+                <li>• CONSTRUCCIÓN CIVIL Y AFINES</li>
+                <li>• SERVICIOS GENERALES PARA ENTIDADES PÚBLICAS Y PRIVADAS</li>
+                <li>• VENTA DE BIENES PARA ENTIDADES PÚBLICAS Y PRIVADAS</li>
+                <li>• ALQUILER DE MAQUINARIA Y EQUIPO PARA TRANSPORTE EN GENERAL</li>
+            </ul>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="proyectos.html">Proyectos</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="gallery">
+            <div class="gallery-item"><img src="images/maquinaria1.png" alt="Maquinaria de construcción"></div>
+            <div class="gallery-item"><img src="images/maquinaria2.png" alt="Demolición de edificio"></div>
+            <div class="gallery-item"><img src="images/maquinaria3.png" alt="Cargador frontal"></div>
+            <div class="gallery-item"><img src="images/maquinaria4.png" alt="Excavadora"></div>
+            <div class="gallery-item"><img src="images/maquinaria5.png" alt="Cargador y camión"></div>
+            <div class="gallery-item"><img src="images/maquinaria6.png" alt="Excavadora en acción"></div>
+        </div>
+    </section>
+
+    <section class="empresa" id="empresa">
+        <h2>EMPRESA</h2>
+        <p>DRC MULTISERVICIOS E.I.R.L., tiene como principal objetivo servir a las diferentes entidades tanto públicas como privadas en general, desarrollando de tal manera las diferentes actividades relacionadas a las especialidades de la construcción, venta de agregados, eliminación de desmonte con certificación del MINAN, como los servicios en generales de la ingeniería civil.</p>
+    </section>
+
+    <section class="mision" id="mision">
+        <h2>MISIÓN</h2>
+        <p>DRC MULTISERVICIOS E.I.R.L., a través de una buena relación profesional y ética con sus clientes, proveedores, empleados y posibles alianzas estratégicas brinda soluciones eficaces y satisfactorias a todos sus clientes, en el campo de la ingeniería civil tanto en el sector público como en el privado.</p>
+    </section>
+
+    <section class="vision" id="vision">
+        <h2>VISIÓN</h2>
+        <p>Lograr el liderazgo en el mercado de la ingeniería civil como empresa de servicios, esto nos permitirá posicionarnos como una empresa Emprendedora y ser reconocidos como una empresa líder en el mercado local y nacional logrando la satisfacción total de nuestros clientes, apoyada en un equipo humano capaz de liderar el mercado, enfrentar nuevos retos y aprovechar oportunidades de crecimiento a través de las fortalezas internas y ventajas competitivas como empresa.</p>
+    </section>
+
+    <section class="sobre-nosotros" id="sobre-nosotros">
+        <h2>SOBRE NOSOTROS</h2>
+        <p>SOMOS UNA EMPRESA PRIVADA PERTENECIENTE AL RUBRO DE LA CONSTRUCCIÓN</p>
+        
+        <div class="servicios-container">
+            <h3>CONTAMOS CON SERVICIOS:</h3>
+            <div class="servicios-grid">
+                <div class="servicio-item">• ALQUILER MAQUINARIAS</div>
+                <div class="servicio-item">• CARGADOR FRONTAL</div>
+                <div class="servicio-item">• RETROEXCAVADORA</div>
+                <div class="servicio-item">• EXCAVADORAS</div>
+                <div class="servicio-item">• MOTONIVELADORA</div>
+                <div class="servicio-item">• VOLQUETES</div>
+                <div class="servicio-item">• BOBCAT</div>
+            </div>
+        </div>
+
+        <div class="agregados-container">
+            <h3>VENTA AGREGADOS DE CONSTRUCCIÓN</h3>
+            <div class="agregados-grid">
+                <div class="agregado-item">• PIEDRA CHANCADA</div>
+                <div class="agregado-item">• EXCAVACIONES MASIVAS</div>
+                <div class="agregado-item">• ARENA GRUESA</div>
+                <div class="agregado-item">• DEMOLICIONES</div>
+                <div class="agregado-item">• AFIRMADO</div>
+                <div class="agregado-item">• NIVELACIONES</div>
+                <div class="agregado-item">• CONFITILLO</div>
+                <div class="agregado-item">• COMPACTACION DE TERRENOS</div>
+                <div class="agregado-item">• ELIMINACIÓN DE DESMONTE</div>
+                <div class="agregado-item">• INSTALACIÓN DE ASFALTO</div>
+                <div class="agregado-item">• MOVIMIENTO DE TIERRAS</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="servicios-generales" id="servicios-generales">
+        <h2>SERVICIOS GENERALES</h2>
+        <h3>REMODELACIÓN ACONDICIONAMIENTO Y PINTURA EN GENERAL</h3>
+        <div class="servicios-gallery">
+            <div class="servicio-img"><img src="images/remodelacion1.png" alt="Remodelación de piso"></div>
+            <div class="servicio-img"><img src="images/remodelacion2.png" alt="Instalación de ventanas"></div>
+            <div class="servicio-img"><img src="images/remodelacion3.png" alt="Cocina remodelada"></div>
+            <div class="servicio-img"><img src="images/remodelacion4.png" alt="Trabajo de drywall"></div>
+        </div>
+    </section>
+
+    <section class="trabajos-realizados" id="trabajos-realizados">
+        <h2>TRABAJOS REALIZADOS</h2>
+        <div class="trabajos-gallery">
+            <div class="trabajo-img"><img src="images/trabajo1.png" alt="Descarga de material"></div>
+            <div class="trabajo-img"><img src="images/trabajo2.png" alt="Material de construcción"></div>
+            <div class="trabajo-img"><img src="images/trabajo3.png" alt="Carga de material"></div>
+            <div class="trabajo-img"><img src="images/trabajo4.png" alt="Camión de obra"></div>
+        </div>
+    </section>
+
+    <section class="featured-section">
+        <div class="featured-content">
+            <h2>TRABAJOS REALIZADOS</h2>
+            <p>Conoce algunos de nuestros proyectos más destacados y la calidad de nuestro trabajo.</p>
+            <div class="featured-grid">
+                <div class="featured-item">
+                    <img src="images/trabajo1.jpg" alt="Motoniveladora en obra">
+                    <h3>Nivelación de terrenos</h3>
+                </div>
+                <div class="featured-item">
+                    <img src="images/trabajo2.jpg" alt="Camión de carga con operario">
+                    <h3>Transporte de materiales</h3>
+                </div>
+                <div class="featured-item">
+                    <img src="images/trabajo3.jpg" alt="Excavadora cargando escombros">
+                    <h3>Remoción de escombros</h3>
+                </div>
+                <div class="featured-item">
+                    <img src="images/trabajo4.jpg" alt="Retroexcavadora en obra">
+                    <h3>Excavación y movimiento de tierras</h3>
+                </div>
+            </div>
+            <a href="servicios.html#trabajos" class="featured-button">VER MÁS TRABAJOS</a>
+        </div>
+    </section>
+
+    <section class="clients-section">
+        <div class="clients-content">
+            <h2>NUESTROS CLIENTES</h2>
+            <p>Empresas que confían en nuestros servicios y profesionalismo.</p>
+            
+            <!-- Carrusel de logos de clientes -->
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <!-- Primera copia de los logos para el efecto infinito -->
+                    <div class="carousel-slide"><img src="images/cliente1.png" alt="Cliente 1"></div>
+                    <div class="carousel-slide"><img src="images/cliente2.png" alt="Cliente 2"></div>
+                    <div class="carousel-slide"><img src="images/cliente3.png" alt="Cliente 3"></div>
+                    <div class="carousel-slide"><img src="images/cliente4.png" alt="Cliente 4"></div>
+                    <div class="carousel-slide"><img src="images/cliente5.png" alt="Cliente 5"></div>
+                    <div class="carousel-slide"><img src="images/cliente6.png" alt="Cliente 6"></div>
+                    <div class="carousel-slide"><img src="images/cliente7.png" alt="Cliente 7"></div>
+                    <div class="carousel-slide"><img src="images/cliente8.png" alt="Cliente 8"></div>
+                    <div class="carousel-slide"><img src="images/cliente9.png" alt="Cliente 9"></div>
+                    
+                    <!-- Segunda copia de los logos para el efecto infinito -->
+                    <div class="carousel-slide"><img src="images/cliente1.png" alt="Cliente 1"></div>
+                    <div class="carousel-slide"><img src="images/cliente2.png" alt="Cliente 2"></div>
+                    <div class="carousel-slide"><img src="images/cliente3.png" alt="Cliente 3"></div>
+                    <div class="carousel-slide"><img src="images/cliente4.png" alt="Cliente 4"></div>
+                    <div class="carousel-slide"><img src="images/cliente5.png" alt="Cliente 5"></div>
+                    <div class="carousel-slide"><img src="images/cliente6.png" alt="Cliente 6"></div>
+                    <div class="carousel-slide"><img src="images/cliente7.png" alt="Cliente 7"></div>
+                    <div class="carousel-slide"><img src="images/cliente8.png" alt="Cliente 8"></div>
+                    <div class="carousel-slide"><img src="images/cliente9.png" alt="Cliente 9"></div>
+                </div>
+            </div>
+            
+            <a href="clientes.html" class="clients-button">VER TODOS LOS CLIENTES</a>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>¿NECESITAS NUESTROS SERVICIOS?</h2>
+            <p>Contáctanos hoy mismo para obtener una cotización gratuita.</p>
+            <a href="contacto.html" class="cta-button">CONTÁCTANOS</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fab fa-whatsapp"></i>
+                <span>947 252 079</span>
+            </div>
+            <div class="contact-item">
+                <i class="far fa-envelope"></i>
+                <span>RODAFINO2007@GMAIL.COM</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>AV. AGUSTIN GAMARRA N° 3664 - S.M.P.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Overlay para mostrar imágenes a pantalla completa -->
+    <div class="fullscreen-overlay" id="fullscreenOverlay">
+        <span class="close-button" id="closeButton">&times;</span>
+        <img src="" alt="Imagen ampliada" class="fullscreen-image" id="fullscreenImage">
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Función para mostrar imagen a pantalla completa
+        function openFullscreen(imageSrc) {
+            const overlay = document.getElementById('fullscreenOverlay');
+            const fullscreenImage = document.getElementById('fullscreenImage');
+            
+            fullscreenImage.src = imageSrc;
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevenir scroll
+        }
+
+        // Función para cerrar la vista a pantalla completa
+        function closeFullscreen() {
+            const overlay = document.getElementById('fullscreenOverlay');
+            overlay.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+        }
+
+        // Event listeners para cerrar el overlay
+        document.getElementById('closeButton').addEventListener('click', closeFullscreen);
+        document.getElementById('fullscreenOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeFullscreen();
+            }
+        });
+
+        // Cerrar con la tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('fullscreenOverlay').style.display === 'flex') {
+                closeFullscreen();
+            }
+        });
+
+        // Agregar event listeners a todas las imágenes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Imágenes del carrusel
+            const carouselImages = document.querySelectorAll('.carousel-slide img');
+            carouselImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    openFullscreen(this.src);
+                });
+            });
+
+            // Imágenes de la galería
+            const galleryImages = document.querySelectorAll('.gallery-item img');
+            galleryImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    openFullscreen(this.src);
+                });
+            });
+
+            // Imágenes de servicios
+            const servicioImages = document.querySelectorAll('.servicio-img img');
+            servicioImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    openFullscreen(this.src);
+                });
+            });
+
+            // Imágenes de trabajos
+            const trabajoImages = document.querySelectorAll('.trabajo-img img');
+            trabajoImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    openFullscreen(this.src);
+                });
+            });
+
+            // Imágenes destacadas
+            const featuredImages = document.querySelectorAll('.featured-item img');
+            featuredImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    openFullscreen(this.src);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

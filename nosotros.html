@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - DRC Multiservicios E.I.R.L.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos mejorados para el encabezado */
+        header {
+            background: linear-gradient(to bottom, #ffffff, #f5f5f5);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-bottom: 3px solid #1e5631;
+        }
+
+        .logo-container {
+            background: linear-gradient(to right, #f5f5f5, #e0e0e0);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: translateY(-2px);
+        }
+
+        .company-info h1 {
+            color: #1e5631;
+            font-size: 28px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            letter-spacing: 1px;
+        }
+        
+        .ruc {
+            color: #555;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .logo {
+            max-height: 80px;
+            filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.2));
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .services-header {
+            background: linear-gradient(to right, #1e5631, #2a7a45);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .services-header ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+        }
+        
+        .services-header li {
+            color: #fff;
+            font-size: 14px;
+            padding: 8px;
+            border-left: 3px solid #a3d45c;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Estilos para la sección de nosotros */
+        .nosotros-container {
+            padding: 40px 20px;
+        }
+        
+        .nosotros-section {
+            margin-bottom: 40px;
+        }
+        
+        .nosotros-section h3 {
+            background-color: #1e5631;
+            color: white;
+            padding: 8px 12px;
+            margin-bottom: 15px;
+            font-size: 22px;
+            border-left: 5px solid #a3d45c;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .nosotros-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .nosotros-content {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 6px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .nosotros-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .nosotros-image {
+            height: 100%;
+            min-height: 300px;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #1e5631;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .nosotros-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nosotros-image img:hover {
+            transform: scale(1.05);
+        }
+        
+        .valores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .valor-card {
+            background-color: #fff;
+            border-left: 5px solid #1e5631;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 0 6px 6px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .valor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .valor-card h4 {
+            color: #1e5631;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .valor-icon {
+            color: #a3d45c;
+            font-size: 24px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .valor-card:hover .valor-icon {
+            transform: scale(1.2);
+        }
+        
+        .breadcrumb {
+            background: linear-gradient(to right, #f5f5f5, #ffffff);
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .breadcrumb a {
+            color: #1e5631;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: #a3d45c;
+            text-decoration: underline;
+        }
+
+        /* Estilos para el fullscreen overlay */
+        .fullscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .fullscreen-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        @media (max-width: 768px) {
+            .nosotros-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo-drc.png" alt="Logo DRC Multiservicios" class="logo">
+            <div class="company-info">
+                <h1>DRC MULTISERVICIOS E.I.R.L.</h1>
+                <p class="ruc">R.U.C. 20610755977</p>
+            </div>
+        </div>
+        <div class="services-header">
+            <ul>
+                <li>• CONSTRUCCIÓN CIVIL Y AFINES</li>
+                <li>• SERVICIOS GENERALES PARA ENTIDADES PÚBLICAS Y PRIVADAS</li>
+                <li>• VENTA DE BIENES PARA ENTIDADES PÚBLICAS Y PRIVADAS</li>
+                <li>• ALQUILER DE MAQUINARIA Y EQUIPO PARA TRANSPORTE EN GENERAL</li>
+            </ul>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="proyectos.html">Proyectos</a></li>
+                <li><a href="nosotros.html" class="active">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="index.html">Inicio</a> > Nosotros
+    </div>
+
+    <section class="nosotros-container">
+        <h2>NOSOTROS</h2>
+        
+        <div class="nosotros-section">
+            <h3>HISTORIA</h3>
+            <div class="nosotros-grid">
+                <div class="nosotros-content">
+                    <p>DRC MULTISERVICIOS E.I.R.L. fue fundada en el año 2018 con el objetivo de brindar servicios de calidad en el sector de construcción civil y servicios generales en la región.</p>
+                    <p>Desde nuestros inicios, nos hemos caracterizado por nuestro compromiso con la excelencia y la satisfacción de nuestros clientes, lo que nos ha permitido crecer y consolidarnos como una empresa líder en el mercado.</p>
+                    <p>A lo largo de estos años, hemos ejecutado numerosos proyectos tanto para entidades públicas como privadas, demostrando nuestra capacidad técnica y profesional en cada uno de ellos.</p>
+                </div>
+                <div class="nosotros-image">
+                    <img src="images/historia-empresa.jpg" alt="Historia de DRC Multiservicios">
+                </div>
+            </div>
+        </div>
+        
+        <div class="nosotros-section">
+            <h3>MISIÓN</h3>
+            <div class="nosotros-content">
+                <p>Brindar servicios de construcción civil, alquiler de maquinaria y servicios generales de alta calidad, cumpliendo con los estándares más exigentes del mercado y satisfaciendo las necesidades de nuestros clientes mediante soluciones innovadoras y sostenibles.</p>
+            </div>
+        </div>
+        
+        <div class="nosotros-section">
+            <h3>VISIÓN</h3>
+            <div class="nosotros-content">
+                <p>Ser reconocidos como una empresa líder en el sector de construcción civil y servicios generales a nivel regional, destacándonos por nuestra excelencia operativa, innovación constante y compromiso con el desarrollo sostenible de nuestra comunidad.</p>
+            </div>
+        </div>
+        
+        <div class="nosotros-section">
+            <h3>VALORES</h3>
+            <div class="valores-grid">
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4>Compromiso</h4>
+                    <p>Nos comprometemos a cumplir con nuestros clientes, colaboradores y la sociedad, asumiendo responsabilidad en cada proyecto que emprendemos.</p>
+                </div>
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h4>Calidad</h4>
+                    <p>Buscamos la excelencia en cada servicio que ofrecemos, garantizando resultados óptimos y duraderos.</p>
+                </div>
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Trabajo en Equipo</h4>
+                    <p>Fomentamos la colaboración y el respeto entre nuestros colaboradores para lograr objetivos comunes.</p>
+                </div>
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h4>Innovación</h4>
+                    <p>Nos adaptamos constantemente a las nuevas tecnologías y metodologías para ofrecer soluciones modernas y eficientes.</p>
+                </div>
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4>Sostenibilidad</h4>
+                    <p>Nos preocupamos por el impacto ambiental de nuestras operaciones, promoviendo prácticas responsables con el medio ambiente.</p>
+                </div>
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h4>Integridad</h4>
+                    <p>Actuamos con honestidad y transparencia en todas nuestras relaciones comerciales y laborales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>DRC MULTISERVICIOS E.I.R.L.</h3>
+                <p>R.U.C. 20610755977</p>
+                <p>Empresa dedicada a brindar servicios de calidad en construcción civil y servicios generales.</p>
+            </div>
+            <div class="footer-section">
+                <h3>CONTACTO</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Dirección: Jr. Tacna N° 1030 - Huánuco</p>
+                <p><i class="fas fa-phone"></i> Teléfono: 962 614 648</p>
+                <p><i class="fas fa-envelope"></i> Email: drcmultiservicios@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>SÍGUENOS</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 DRC MULTISERVICIOS E.I.R.L. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Overlay para mostrar imágenes a pantalla completa -->
+    <div class="fullscreen-overlay" id="fullscreenOverlay">
+        <span class="close-button" id="closeButton">&times;</span>
+        <img src="" alt="Imagen ampliada" class="fullscreen-image" id="fullscreenImage">
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Función para mostrar imagen a pantalla completa
+        function openFullscreen(imageSrc) {
+            const overlay = document.getElementById('fullscreenOverlay');
+            const fullscreenImage = document.getElementById('fullscreenImage');
+            
+            fullscreenImage.src = imageSrc;
+            overlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevenir scroll
+        }
+
+        // Función para cerrar la vista a pantalla completa
+        function closeFullscreen() {
+            const overlay = document.getElementById('fullscreenOverlay');
+            overlay.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+        }
+
+        // Event listeners para cerrar el overlay
+        document.getElementById('closeButton').addEventListener('click', closeFullscreen);
+        document.getElementById('fullscreenOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeFullscreen();
+            }
+        });
+
+        // Cerrar con la tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('fullscreenOverlay').style.display === 'flex') {
+                closeFullscreen();
+            }
+        });
+
+        // Agregar event listeners a todas las imágenes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Imágenes de la sección nosotros
+            const nosotrosImages = document.querySelectorAll('.nosotros-image img');
+            nosotrosImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    openFullscreen(this.src);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

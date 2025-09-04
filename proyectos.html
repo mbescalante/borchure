@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos - DRC Multiservicios E.I.R.L.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos mejorados para el encabezado */
+        header {
+            background: linear-gradient(to bottom, #ffffff, #f5f5f5);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-bottom: 3px solid #1e5631;
+        }
+
+        .logo-container {
+            background: linear-gradient(to right, #f5f5f5, #e0e0e0);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: translateY(-2px);
+        }
+
+        .company-info h1 {
+            color: #1e5631;
+            font-size: 28px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            letter-spacing: 1px;
+        }
+        
+        .ruc {
+            color: #555;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .logo {
+            max-height: 80px;
+            filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.2));
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .services-header {
+            background: linear-gradient(to right, #1e5631, #2a7a45);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .services-header ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+        }
+        
+        .services-header li {
+            color: #fff;
+            font-size: 14px;
+            padding: 8px;
+            border-left: 3px solid #a3d45c;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Estilos para la sección de proyectos */
+        .proyectos-container {
+            padding: 40px 20px;
+        }
+        
+        .proyecto-card {
+            background-color: #fff;
+            border-left: 5px solid #1e5631;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .proyecto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .proyecto-card h3 {
+            background-color: #1e5631;
+            color: white;
+            padding: 8px 12px;
+            margin-bottom: 15px;
+            font-size: 22px;
+            border-radius: 4px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .proyecto-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .proyecto-detalle {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .proyecto-detalle p {
+            margin-bottom: 10px;
+        }
+        
+        .proyecto-detalle strong {
+            color: #1e5631;
+            font-weight: bold;
+        }
+        
+        .proyecto-galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .proyecto-imagen {
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .proyecto-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            border: 3px solid #1e5631;
+            cursor: pointer;
+        }
+        
+        .proyecto-imagen:hover img {
+            transform: scale(1.05);
+        }
+        
+        .breadcrumb {
+            background: linear-gradient(to right, #f5f5f5, #ffffff);
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .breadcrumb a {
+            color: #1e5631;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: #a3d45c;
+            text-decoration: underline;
+        }
+        
+        .filtros {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .filtro-btn {
+            background-color: #f5f5f5;
+            border: 2px solid #1e5631;
+            color: #1e5631;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        
+        .filtro-btn:hover, .filtro-btn.active {
+            background-color: #1e5631;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Estilos para el fullscreen overlay */
+        .fullscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .fullscreen-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo-drc.png" alt="Logo DRC Multiservicios" class="logo">
+            <div class="company-info">
+                <h1>DRC MULTISERVICIOS E.I.R.L.</h1>
+                <p class="ruc">R.U.C. 20610755977</p>
+            </div>
+        </div>
+        <div class="services-header">
+            <ul>
+                <li>• CONSTRUCCIÓN CIVIL Y AFINES</li>
+                <li>• SERVICIOS GENERALES PARA ENTIDADES PÚBLICAS Y PRIVADAS</li>
+                <li>• VENTA DE BIENES PARA ENTIDADES PÚBLICAS Y PRIVADAS</li>
+                <li>• ALQUILER DE MAQUINARIA Y EQUIPO PARA TRANSPORTE EN GENERAL</li>
+            </ul>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="proyectos.html" class="active">Proyectos</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="index.html">Inicio</a> > Proyectos Realizados
+    </div>
+
+    <section class="proyectos-container">
+        <h2>PROYECTOS REALIZADOS</h2>
+        
+        <div class="filtros">
+            <button class="filtro-btn active" data-filter="todos">Todos</button>
+            <button class="filtro-btn" data-filter="construccion">Construcción</button>
+            <button class="filtro-btn" data-filter="movimiento">Movimiento de Tierras</button>
+            <button class="filtro-btn" data-filter="remodelacion">Remodelación</button>
+        </div>
+        
+        <div class="proyecto-card" data-categoria="movimiento">
+            <h3>Suministro de Material de Construcción</h3>
+            
+            <div class="proyecto-info">
+                <div class="proyecto-detalle">
+                    <p><strong>Cliente:</strong> Empresa Constructora</p>
+                    <p><strong>Ubicación:</strong> San Martín de Porres, Lima</p>
+                    <p><strong>Año:</strong> 2023</p>
+                    <p><strong>Descripción:</strong> Suministro de material de construcción para obra residencial, incluyendo arena gruesa, piedra chancada y afirmado. El proyecto incluyó el transporte y descarga del material en el sitio de la obra.</p>
+                </div>
+            </div>
+            
+            <div class="proyecto-galeria">
+                <div class="proyecto-imagen">
+                    <img src="images/trabajo1.jpg" alt="Descarga de material">
+                </div>
+                <div class="proyecto-imagen">
+                    <img src="images/trabajo2.jpg" alt="Material de construcción">
+                </div>
+            </div>
+        </div>
+        
+        <div class="proyecto-card" data-categoria="construccion">
+            <h3>Movimiento de Tierras y Preparación de Terreno</h3>
+            
+            <div class="proyecto-info">
+                <div class="proyecto-detalle">
+                    <p><strong>Cliente:</strong> Entidad Pública</p>
+                    <p><strong>Ubicación:</strong> Lima Norte</p>
+                    <p><strong>Año:</strong> 2022</p>
+                    <p><strong>Descripción:</strong> Proyecto de movimiento de tierras y preparación de terreno para construcción de edificación pública. El trabajo incluyó excavación, nivelación y compactación del terreno utilizando maquinaria especializada.</p>
+                </div>
+            </div>
+            
+            <div class="proyecto-galeria">
+                <div class="proyecto-imagen">
+                    <img src="images/trabajo3.jpg" alt="Carga de material">
+                </div>
+                <div class="proyecto-imagen">
+                    <img src="images/trabajo4.jpg" alt="Camión de obra">
+                </div>
+                <div class="proyecto-imagen">
+                    <img src="images/maquinaria1.png" alt="Maquinaria en obra">
+                </div>
+            </div>
+        </div>
+        
+        <div class="proyecto-card" data-categoria="remodelacion">
+            <h3>Remodelación de Interiores</h3>
+            
+            <div class="proyecto-info">
+                <div class="proyecto-detalle">
+                    <p><strong>Cliente:</strong> Cliente Privado</p>
+                    <p><strong>Ubicación:</strong> San Miguel, Lima</p>
+                    <p><strong>Año:</strong> 2023</p>
+                    <p><strong>Descripción:</strong> Proyecto de remodelación de interiores para vivienda familiar. El trabajo incluyó instalación de drywall, pintura, instalaciones eléctricas y sanitarias, y acabados de primera calidad.</p>
+                </div>
+            </div>
+            
+            <div class="proyecto-galeria">
+                <div class="proyecto-imagen">
+                    <img src="images/remodelacion1.png" alt="Remodelación de piso">
+                </div>
+                <div class="proyecto-imagen">
+                    <img src="images/remodelacion2.png" alt="Instalación de ventanas">
+                </div>
+                <div class="proyecto-imagen">
+                    <img src="images/remodelacion3.png" alt="Cocina remodelada">
+                </div>
+                <div class="proyecto-imagen">
+                    <img src="images/remodelacion4.png" alt="Trabajo de drywall">
+                </div>
+            </div>
+        </div>
+        
+        <div class="proyecto-card" data-categoria="construccion">
+            <h3>Demolición y Preparación de Terreno</h3>
+            
+            <div class="proyecto-info">
+                <div class="proyecto-detalle">
+                    <p><strong>Cliente:</strong> Empresa Inmobiliaria</p>
+                    <p><strong>Ubicación:</strong> Lima Centro</p>
+                    <p><strong>Año:</strong> 2022</p>
+                    <p><strong>Descripción:</strong> Proyecto de demolición de estructura existente y preparación del terreno para nueva construcción. El trabajo incluyó demolición controlada, eliminación de desmonte y nivelación del terreno.</p>
+                </div>
+            </div>
+            
+            <div class="proyecto-galeria">
+                <div class="proyecto-imagen">
+                    <img src="images/maquinaria2.png" alt="Demolición de edificio">
+                </div>
+                <div class="proyecto-imagen">
+                    <img src="images/maquinaria4.png" alt="Excavadora">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fab fa-whatsapp"></i>
+                <span>947 252 079</span>
+            </div>
+            <div class="contact-item">
+                <i class="far fa-envelope"></i>
+                <span>RODAFINO2007@GMAIL.COM</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>AV. AGUSTIN GAMARRA N° 3664 - S.M.P.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Overlay para mostrar imágenes a pantalla completa -->
+    <div class="fullscreen-overlay" id="fullscreenOverlay">
+        <span class="close-button" id="closeButton">&times;</span>
+        <img src="" alt="Imagen ampliada" class="fullscreen-image" id="fullscreenImage">
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Filtrado de proyectos
+        document.addEventListener('DOMContentLoaded', function() {
+            const filtros = document.querySelectorAll('.filtro-btn');
+            const proyectos = document.querySelectorAll('.proyecto-card');
+            
+            filtros.forEach(filtro => {
+                filtro.addEventListener('click', function() {
+                    // Remover clase active de todos los filtros
+                    filtros.forEach(f => f.classList.remove('active'));
+                    // Añadir clase active al filtro clickeado
+                    this.classList.add('active');
+                    
+                    const filtroSeleccionado = this.getAttribute('data-filter');
+                    
+                    // Mostrar u ocultar proyectos según el filtro
+                    proyectos.forEach(proyecto => {
+                        if (filtroSeleccionado === 'todos' || proyecto.getAttribute('data-categoria') === filtroSeleccionado) {
+                            proyecto.style.display = 'block';
+                        } else {
+                            proyecto.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Funcionalidad de lightbox para imágenes
+            // Función para mostrar imagen a pantalla completa
+            function openFullscreen(imageSrc) {
+                const overlay = document.getElementById('fullscreenOverlay');
+                const fullscreenImage = document.getElementById('fullscreenImage');
+                
+                fullscreenImage.src = imageSrc;
+                overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Prevenir scroll
+            }
+
+            // Función para cerrar la vista a pantalla completa
+            function closeFullscreen() {
+                const overlay = document.getElementById('fullscreenOverlay');
+                overlay.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restaurar scroll
+            }
+
+            // Event listeners para cerrar el overlay
+            document.getElementById('closeButton').addEventListener('click', closeFullscreen);
+            document.getElementById('fullscreenOverlay').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeFullscreen();
+                }
+            });
+
+            // Cerrar con la tecla Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && document.getElementById('fullscreenOverlay').style.display === 'flex') {
+                    closeFullscreen();
+                }
+            });
+
+            // Agregar event listeners a todas las imágenes de proyectos
+            const proyectoImagenes = document.querySelectorAll('.proyecto-imagen img');
+            proyectoImagenes.forEach(img => {
+                img.addEventListener('click', function() {
+                    openFullscreen(this.src);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

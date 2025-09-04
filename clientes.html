@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes - DRC Multiservicios E.I.R.L.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos mejorados para el encabezado */
+        header {
+            background: linear-gradient(to bottom, #ffffff, #f5f5f5);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-bottom: 3px solid #1e5631;
+        }
+
+        .logo-container {
+            background: linear-gradient(to right, #f5f5f5, #e0e0e0);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: translateY(-2px);
+        }
+
+        .company-info h1 {
+            color: #1e5631;
+            font-size: 28px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            letter-spacing: 1px;
+        }
+        
+        .ruc {
+            color: #555;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .logo {
+            max-height: 80px;
+            filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.2));
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .services-header {
+            background: linear-gradient(to right, #1e5631, #2a7a45);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .services-header ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+        }
+        
+        .services-header li {
+            color: #fff;
+            font-size: 14px;
+            padding: 8px;
+            border-left: 3px solid #a3d45c;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Estilos mejorados para la sección de clientes */
+        .clientes-container {
+            padding: 40px 20px;
+        }
+        
+        .clientes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .cliente-card {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cliente-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .cliente-logo {
+            max-width: 100%;
+            max-height: 120px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .cliente-logo:hover {
+            transform: scale(1.1);
+        }
+        
+        .cliente-nombre {
+            font-weight: bold;
+            background-color: #1e5631;
+            color: white;
+            margin-top: 10px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            width: 100%;
+        }
+        
+        /* Estilos mejorados para breadcrumb */
+        .breadcrumb {
+            background: linear-gradient(to right, #f5f5f5, #ffffff);
+            padding: 12px 25px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: #1e5631;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+            color: #2a7d45;
+        }
+
+        /* Estilos para el fullscreen overlay */
+        .fullscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .fullscreen-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Estilos para el carrusel de logos */
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin: 40px 0;
+            padding: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        .carousel-track {
+            display: flex;
+            animation: scroll 30s linear infinite;
+            width: calc(200px * 18); /* 9 logos * 2 (para repetir) * 200px ancho */
+        }
+
+        .carousel-slide {
+            width: 200px;
+            flex-shrink: 0;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-slide img {
+            max-width: 100%;
+            max-height: 100px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .carousel-slide img:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 5px rgba(30, 86, 49, 0.5));
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-200px * 9)); /* 9 logos * 200px ancho */
+            }
+        }
+
+        /* Controles del carrusel */
+        .carousel-container:hover .carousel-track {
+            animation-play-state: paused;
+        }
+
+        .carousel-container::before,
+        .carousel-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 50px;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .carousel-container::before {
+            left: 0;
+            background: linear-gradient(to right, #fff, transparent);
+        }
+
+        .carousel-container::after {
+            right: 0;
+            background: linear-gradient(to left, #fff, transparent);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo-drc.png" alt="Logo DRC Multiservicios" class="logo">
+            <div class="company-info">
+                <h1>DRC MULTISERVICIOS E.I.R.L.</h1>
+                <p class="ruc">R.U.C. 20610755977</p>
+            </div>
+        </div>
+        <div class="services-header">
+            <ul>
+                <li>• CONSTRUCCIÓN CIVIL Y AFINES</li>
+                <li>• SERVICIOS GENERALES PARA ENTIDADES PÚBLICAS Y PRIVADAS</li>
+                <li>• VENTA DE BIENES PARA ENTIDADES PÚBLICAS Y PRIVADAS</li>
+                <li>• ALQUILER DE MAQUINARIA Y EQUIPO PARA TRANSPORTE EN GENERAL</li>
+            </ul>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="proyectos.html">Proyectos</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="clientes.html" class="active">Clientes</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="index.html">Inicio</a> > Clientes
+    </div>
+
+    <section class="clientes-container">
+        <h2>NUESTROS CLIENTES</h2>
+        <p>En DRC Multiservicios E.I.R.L. nos enorgullece haber trabajado con importantes empresas del sector construcción y desarrollo inmobiliario. Nuestra cartera de clientes es testimonio de la confianza depositada en nuestros servicios y la calidad de nuestro trabajo.</p>
+        
+        <!-- Carrusel de logos de clientes -->
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <!-- Primera copia de los logos para el efecto infinito -->
+                <div class="carousel-slide"><img src="images/cliente1.png" alt="Cliente 1"></div>
+                <div class="carousel-slide"><img src="images/cliente2.png" alt="Cliente 2"></div>
+                <div class="carousel-slide"><img src="images/cliente3.png" alt="Cliente 3"></div>
+                <div class="carousel-slide"><img src="images/cliente4.png" alt="Cliente 4"></div>
+                <div class="carousel-slide"><img src="images/cliente5.png" alt="Cliente 5"></div>
+                <div class="carousel-slide"><img src="images/cliente6.png" alt="Cliente 6"></div>
+                <div class="carousel-slide"><img src="images/cliente7.png" alt="Cliente 7"></div>
+                <div class="carousel-slide"><img src="images/cliente8.png" alt="Cliente 8"></div>
+                <div class="carousel-slide"><img src="images/cliente9.png" alt="Cliente 9"></div>
+                
+                <!-- Segunda copia de los logos para el efecto infinito -->
+                <div class="carousel-slide"><img src="images/cliente1.png" alt="Cliente 1"></div>
+                <div class="carousel-slide"><img src="images/cliente2.png" alt="Cliente 2"></div>
+                <div class="carousel-slide"><img src="images/cliente3.png" alt="Cliente 3"></div>
+                <div class="carousel-slide"><img src="images/cliente4.png" alt="Cliente 4"></div>
+                <div class="carousel-slide"><img src="images/cliente5.png" alt="Cliente 5"></div>
+                <div class="carousel-slide"><img src="images/cliente6.png" alt="Cliente 6"></div>
+                <div class="carousel-slide"><img src="images/cliente7.png" alt="Cliente 7"></div>
+                <div class="carousel-slide"><img src="images/cliente8.png" alt="Cliente 8"></div>
+                <div class="carousel-slide"><img src="images/cliente9.png" alt="Cliente 9"></div>
+            </div>
+        </div>
+        
+        <h3>Detalle de nuestros clientes</h3>
+        <div class="clientes-grid">
+            <div class="cliente-card">
+                <img src="images/cliente1.png" alt="JE Construcciones Generales" class="cliente-logo">
+                <div class="cliente-nombre">JE CONSTRUCCIONES GENERALES S.A.</div>
+            </div>
+            <div class="cliente-card">
+                <img src="images/cliente2.png" alt="YMSA Constructora" class="cliente-logo">
+                <div class="cliente-nombre">YMSA CONSTRUCTORA</div>
+            </div>
+            <div class="cliente-card">
+                <img src="images/cliente3.png" alt="T&HV Construcciones Generales" class="cliente-logo">
+                <div class="cliente-nombre">T&HV CONSTRUCCIONES GENERALES</div>
+            </div>
+            <div class="cliente-card">
+                <img src="images/cliente4.png" alt="Constructora Manglares de Tumpis" class="cliente-logo">
+                <div class="cliente-nombre">CONSTRUCTORA MANGLARES DE TUMPIS SAC</div>
+            </div>
+            <div class="cliente-card">
+                <img src="images/cliente5.png" alt="INARCO Constructora" class="cliente-logo">
+                <div class="cliente-nombre">INARCO CONSTRUCTORA</div>
+            </div>
+            <div class="cliente-card">
+                <img src="images/cliente6.png" alt="Abril Grupo Inmobiliario" class="cliente-logo">
+                <div class="cliente-nombre">ABRIL GRUPO INMOBILIARIO</div>
+            </div>
+            <div class="cliente-card">
+                <img src="images/cliente7.png" alt="ICASA" class="cliente-logo">
+                <div class="cliente-nombre">ICASA</div>
+            </div>
+            <div class="cliente-card">
+                <img src="images/cliente8.png" alt="Mall Plaza" class="cliente-logo">
+                <div class="cliente-nombre">MALL PLAZA</div>
+            </div>
+            <div class="cliente-card">
+                <img src="images/cliente9.png" alt="CBN" class="cliente-logo">
+                <div class="cliente-nombre">CBN</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>DRC MULTISERVICIOS E.I.R.L.</h3>
+                <p>R.U.C. 20610755977</p>
+                <p>Empresa dedicada a brindar servicios de calidad en construcción civil y servicios generales.</p>
+            </div>
+            <div class="footer-section">
+                <h3>CONTACTO</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Dirección: Av. Agustín Gamarra N° 3664 - S.M.P.</p>
+                <p><i class="fas fa-phone"></i> Teléfono: 947 252 079</p>
+                <p><i class="fas fa-envelope"></i> Email: rodafino2007@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>SÍGUENOS</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 DRC MULTISERVICIOS E.I.R.L. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Overlay para mostrar imágenes a pantalla completa -->
+    <div class="fullscreen-overlay" id="fullscreen-overlay">
+        <span class="close-button" onclick="closeFullscreen()">&times;</span>
+        <img src="" alt="Imagen a pantalla completa" class="fullscreen-image" id="fullscreen-image">
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Función para mostrar imagen a pantalla completa
+        function openFullscreen(imageSrc) {
+            const overlay = document.getElementById('fullscreen-overlay');
+            const image = document.getElementById('fullscreen-image');
+            
+            image.src = imageSrc;
+            overlay.style.display = 'flex';
+            
+            // Evitar scroll del body cuando el overlay está abierto
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Función para cerrar la imagen a pantalla completa
+        function closeFullscreen() {
+            const overlay = document.getElementById('fullscreen-overlay');
+            overlay.style.display = 'none';
+            
+            // Restaurar scroll del body
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Cerrar el overlay al hacer clic fuera de la imagen
+        document.getElementById('fullscreen-overlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeFullscreen();
+            }
+        });
+        
+        // Cerrar el overlay al presionar la tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('fullscreen-overlay').style.display === 'flex') {
+                closeFullscreen();
+            }
+        });
+        
+        // Agregar evento onclick a todas las imágenes del carrusel
+        document.querySelectorAll('.carousel-slide img').forEach(img => {
+            img.onclick = function() {
+                openFullscreen(this.src);
+            };
+        });
+        
+        // Agregar evento onclick a todas las imágenes de los clientes
+        document.querySelectorAll('.cliente-logo').forEach(img => {
+            img.onclick = function() {
+                openFullscreen(this.src);
+            };
+        });
+    </script>
+</body>
+</html>

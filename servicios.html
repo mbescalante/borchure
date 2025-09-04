@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - DRC Multiservicios E.I.R.L.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos mejorados para el encabezado */
+        .logo-container {
+            background: linear-gradient(to right, #f5f5f5, #e0e0e0);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .company-info h1 {
+            color: #1e5631;
+            font-size: 28px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            letter-spacing: 1px;
+        }
+        
+        .ruc {
+            color: #555;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+        
+        .services-header {
+            background: linear-gradient(to right, #1e5631, #2a7a45);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .services-header ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+        }
+        
+        .services-header li {
+            color: #fff;
+            font-size: 14px;
+            padding: 8px;
+            border-left: 3px solid #a3d45c;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 0 4px 4px 0;
+        }
+        
+        /* Estilos para servicios detallados */
+        .servicios-detallados {
+            padding: 40px 20px;
+        }
+        
+        .servicio-card {
+            background-color: #fff;
+            border-left: 5px solid #1e5631;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .servicio-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .servicio-card h3 {
+            color: #1e5631;
+            background-color: #a3d45c;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+        }
+        
+        .servicio-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .servicio-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .servicio-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+        }
+        
+        .servicio-image img {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: cover;
+            border: 3px solid #1e5631;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .servicio-image img:hover {
+            transform: scale(1.03);
+        }
+        
+        .breadcrumb {
+            background-color: #f5f5f5;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .breadcrumb a {
+            color: #1e5631;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Estilos para trabajos realizados */
+        .trabajo-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .trabajo-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .trabajo-titulo {
+            color: #fff !important;
+            background-color: #1e5631 !important;
+            padding: 10px 15px !important;
+            margin-top: 0 !important;
+            border-radius: 4px !important;
+            font-weight: bold !important;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.2) !important;
+        }
+        
+        /* Estilos para la visualización de imagen en pantalla completa */
+        .fullscreen-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .fullscreen-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border: 3px solid white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .close-fullscreen {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo-drc.png" alt="Logo DRC Multiservicios" class="logo">
+            <div class="company-info">
+                <h1>DRC MULTISERVICIOS E.I.R.L.</h1>
+                <p class="ruc">R.U.C. 20610755977</p>
+            </div>
+        </div>
+        <div class="services-header">
+            <ul>
+                <li>• CONSTRUCCIÓN CIVIL Y AFINES</li>
+                <li>• SERVICIOS GENERALES PARA ENTIDADES PÚBLICAS Y PRIVADAS</li>
+                <li>• VENTA DE BIENES PARA ENTIDADES PÚBLICAS Y PRIVADAS</li>
+                <li>• ALQUILER DE MAQUINARIA Y EQUIPO PARA TRANSPORTE EN GENERAL</li>
+            </ul>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html" class="active">Servicios</a></li>
+                <li><a href="proyectos.html">Proyectos</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="index.html">Inicio</a> > Servicios Detallados
+    </div>
+
+    <section class="servicios-detallados">
+        <h2>NUESTROS SERVICIOS DETALLADOS</h2>
+        
+        <div class="servicio-card">
+            <h3>ALQUILER DE MAQUINARIA PESADA</h3>
+            <div class="servicio-content">
+                <div class="servicio-text">
+                    <p>En DRC MULTISERVICIOS E.I.R.L. contamos con una amplia flota de maquinaria pesada para alquiler, incluyendo:</p>
+                    <ul>
+                        <li>Excavadoras</li>
+                        <li>Retroexcavadoras</li>
+                        <li>Cargadores frontales</li>
+                        <li>Volquetes</li>
+                        <li>Motoniveladoras</li>
+                        <li>Bobcat</li>
+                    </ul>
+                    <p>Nuestra maquinaria está en excelentes condiciones y contamos con operadores altamente capacitados para garantizar un trabajo eficiente y seguro.</p>
+                </div>
+                <div class="servicio-image">
+                    <img src="images/maquinaria5.png" alt="Maquinaria pesada" onclick="document.getElementById('fullscreenImage').src=this.src; document.getElementById('fullscreenOverlay').style.display='flex'; document.body.style.overflow='hidden';">
+                </div>
+            </div>
+        </div>
+        
+        <div class="servicio-card">
+            <h3>CONSTRUCCIÓN CIVIL</h3>
+            <div class="servicio-content">
+                <div class="servicio-text">
+                    <p>Ofrecemos servicios completos de construcción civil para proyectos de cualquier envergadura:</p>
+                    <ul>
+                        <li>Edificaciones</li>
+                        <li>Obras de infraestructura</li>
+                        <li>Movimiento de tierras</li>
+                        <li>Demoliciones</li>
+                        <li>Pavimentación</li>
+                    </ul>
+                    <p>Contamos con un equipo de ingenieros y técnicos especializados que garantizan la calidad y cumplimiento de plazos en todos nuestros proyectos.</p>
+                </div>
+                <div class="servicio-image">
+                    <img src="images/trabajo2.jpg" alt="Construcción civil" onclick="document.getElementById('fullscreenImage').src=this.src; document.getElementById('fullscreenOverlay').style.display='flex'; document.body.style.overflow='hidden';">
+                </div>
+            </div>
+        </div>
+        
+        <div class="servicio-card">
+            <h3>VENTA DE AGREGADOS</h3>
+            <div class="servicio-content">
+                <div class="servicio-text">
+                    <p>Disponemos de una amplia variedad de agregados para construcción:</p>
+                    <ul>
+                        <li>Piedra chancada</li>
+                        <li>Arena gruesa</li>
+                        <li>Afirmado</li>
+                        <li>Confitillo</li>
+                    </ul>
+                    <p>Todos nuestros materiales cumplen con los estándares de calidad requeridos para garantizar la durabilidad y resistencia de sus proyectos.</p>
+                </div>
+                <div class="servicio-image">
+                    <img src="images/trabajo1.jpg" alt="Agregados de construcción" onclick="document.getElementById('fullscreenImage').src=this.src; document.getElementById('fullscreenOverlay').style.display='flex'; document.body.style.overflow='hidden';">
+                </div>
+            </div>
+        </div>
+        
+        <div class="servicio-card">
+            <h3>REMODELACIÓN Y ACONDICIONAMIENTO</h3>
+            <div class="servicio-content">
+                <div class="servicio-text">
+                    <p>Brindamos servicios especializados en:</p>
+                    <ul>
+                        <li>Remodelación de interiores</li>
+                        <li>Acondicionamiento de espacios</li>
+                        <li>Instalación de drywall</li>
+                        <li>Pintura en general</li>
+                        <li>Instalaciones eléctricas y sanitarias</li>
+                    </ul>
+                    <p>Transformamos cualquier espacio según sus necesidades, con acabados de primera calidad y atención al detalle.</p>
+                </div>
+                <div class="servicio-image">
+                    <img src="images/remodelacion4.png" alt="Remodelación" onclick="document.getElementById('fullscreenImage').src=this.src; document.getElementById('fullscreenOverlay').style.display='flex'; document.body.style.overflow='hidden';">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="trabajos" class="trabajos-container">
+        <h2>TRABAJOS REALIZADOS</h2>
+        <p>En DRC Multiservicios E.I.R.L. contamos con amplia experiencia en diversos proyectos. A continuación, presentamos algunos de nuestros trabajos más destacados:</p>
+        
+        <div class="trabajos-grid">
+            <div class="trabajo-card">
+                <img src="images/trabajo1.jpg" alt="Motoniveladora en obra" class="trabajo-img" onclick="document.getElementById('fullscreenImage').src=this.src; document.getElementById('fullscreenOverlay').style.display='flex'; document.body.style.overflow='hidden';">
+                <div class="trabajo-info">
+                    <h3 class="trabajo-titulo">Nivelación de terrenos</h3>
+                    <p>Trabajos de nivelación y preparación de terrenos para construcción con maquinaria especializada.</p>
+                </div>
+            </div>
+            <div class="trabajo-card">
+                <img src="images/trabajo2.jpg" alt="Camión de carga con operario" class="trabajo-img" onclick="document.getElementById('fullscreenImage').src=this.src; document.getElementById('fullscreenOverlay').style.display='flex'; document.body.style.overflow='hidden';">
+                <div class="trabajo-info">
+                    <h3 class="trabajo-titulo">Transporte de materiales</h3>
+                    <p>Servicio de transporte de materiales de construcción con camiones de carga pesada.</p>
+                </div>
+            </div>
+            <div class="trabajo-card">
+                <img src="images/trabajo3.jpg" alt="Excavadora cargando escombros" class="trabajo-img" onclick="document.getElementById('fullscreenImage').src=this.src; document.getElementById('fullscreenOverlay').style.display='flex'; document.body.style.overflow='hidden';">
+                <div class="trabajo-info">
+                    <h3 class="trabajo-titulo">Remoción de escombros</h3>
+                    <p>Limpieza y remoción de escombros en obras de construcción y demolición.</p>
+                </div>
+            </div>
+            <div class="trabajo-card">
+                <img src="images/trabajo4.jpg" alt="Retroexcavadora en obra" class="trabajo-img" onclick="document.getElementById('fullscreenImage').src=this.src; document.getElementById('fullscreenOverlay').style.display='flex'; document.body.style.overflow='hidden';">
+                <div class="trabajo-info">
+                    <h3 class="trabajo-titulo">Excavación y movimiento de tierras</h3>
+                    <p>Trabajos de excavación y movimiento de tierras con retroexcavadoras y personal calificado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fab fa-whatsapp"></i>
+                <span>947 252 079</span>
+            </div>
+            <div class="contact-item">
+                <i class="far fa-envelope"></i>
+                <span>RODAFINO2007@GMAIL.COM</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>AV. AGUSTIN GAMARRA N° 3664 - S.M.P.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Overlay para visualización de imágenes en pantalla completa -->
+    <div class="fullscreen-overlay" id="fullscreenOverlay">
+        <span class="close-fullscreen" id="closeFullscreen">&times;</span>
+        <img src="" alt="Imagen en pantalla completa" class="fullscreen-image" id="fullscreenImage">
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Función para mostrar imágenes en pantalla completa
+        document.addEventListener('DOMContentLoaded', function() {
+            // Obtener elementos del DOM
+            const overlay = document.getElementById('fullscreenOverlay');
+            const fullscreenImage = document.getElementById('fullscreenImage');
+            const closeBtn = document.getElementById('closeFullscreen');
+            
+            // Obtener todas las imágenes que pueden mostrarse en pantalla completa
+            const servicioImages = document.querySelectorAll('.servicio-image img');
+            const trabajoImages = document.querySelectorAll('.trabajo-img');
+            
+            // Función para abrir la imagen en pantalla completa
+            function openFullscreen(imgSrc, altText) {
+                fullscreenImage.src = imgSrc;
+                fullscreenImage.alt = altText || 'Imagen en pantalla completa';
+                overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Evitar scroll en el fondo
+            }
+            
+            // Función para cerrar la imagen en pantalla completa
+            function closeFullscreen() {
+                overlay.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restaurar scroll
+            }
+            
+            // Agregar eventos a las imágenes de servicios
+            servicioImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    openFullscreen(this.src, this.alt);
+                });
+            });
+            
+            // Agregar eventos a las imágenes de trabajos
+            trabajoImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    openFullscreen(this.src, this.alt);
+                });
+            });
+            
+            // Cerrar al hacer clic en el botón de cierre
+            closeBtn.addEventListener('click', closeFullscreen);
+            
+            // Cerrar al hacer clic en el overlay
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) {
+                    closeFullscreen();
+                }
+            });
+            
+            // Cerrar al presionar la tecla Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && overlay.style.display === 'flex') {
+                    closeFullscreen();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
